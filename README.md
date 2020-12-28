@@ -6,3 +6,5 @@
 
 這裡可以玩：
 https://longneckdeer.github.io/gomoku/gomoku.html
+
+主要設計目的是研棋用，不做遊戲性的功能
