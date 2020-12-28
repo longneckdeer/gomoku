@@ -6,6 +6,7 @@ function Gomoku(board,grid){
     this.currentBlack=true;
     this.blackComputer=false;
     this.whiteComputer=true;
+    this.finished=false;
     this.gomsets=[];
     this.nextMove=1;
 
@@ -28,9 +29,23 @@ Gomoku.prototype.drawGrid=function(){
     this.grid.onclick=function(e){
         var x=Math.ceil((e.layerX+this.w/2)/this.w);
         var y=Math.ceil((e.layerY+this.h/2)/this.h);
+        if(this.go.hasGomAt(x,y)) return;
+        if(this.go.finished) return;
+
         if(this.go.currentBlack) this.go.shaBlack(x,y);
         else this.go.shaWhite(x,y);
     }
+};
+Gomoku.prototype.hasGomAt=function(x,y){
+  for(var i=0;i<this.black.length;i++){
+      var g=this.black[i];
+      if(g.x===x && g.y===y) return true;
+  }
+    for(var i=0;i<this.white.length;i++){
+        var g=this.white[i];
+        if(g.x===x && g.y===y) return true;
+    }
+    return false;
 };
 Gomoku.prototype.drawBoard=function(){
     this.board.innerHTML='';
@@ -375,15 +390,12 @@ Gomoku.prototype.scan=function(x,y,type){
     }
 };
 Gomoku.prototype.showResult=function(){
-    // var count=0;
-    // console.clear();
-    // for(var i=0;i<this.gomsets.length;i++){
-    //     var gs=this.gomsets[i];
-    //     if(gs.goms.length>1){
-    //         count++;
-    //         console.log(count+':'+gs.analyzeResult());
-    //     }
-    // }
+    for(var i=0;i<this.gomsets.length;i++){
+        var gs=this.gomsets[i];
+        if(gs.goms.length>4){
+            this.finished=true;
+        }
+    }
 };
 Gomoku.prototype.analyzeGomsets=function(){
     this.analyzeReset();
