@@ -5,6 +5,7 @@
 1. 目前無禁手
 
 [點這裡](https://longneckdeer.github.io/gomoku/gomoku.html)可以玩：
+
 https://longneckdeer.github.io/gomoku/gomoku.html
 
 主要設計目的是研棋用，不做遊戲性的功能
