@@ -3,3 +3,6 @@
 
 1. 先下三顆開局，電腦就會自動下白的
 1. 目前無禁手
+
+這裡可以玩：
+https://longneckdeer.github.io/gomoku/gomoku.html
