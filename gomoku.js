@@ -1,13 +1,20 @@
+/*
+
+變數名詞解釋
+Gom: 一顆棋
+Gomset: 一組活二死二活三死三等等
+
+*/
 function Gomoku(board,grid){
-    this.black=[];
-    this.white=[];
+    this.black=[];//黑棋
+    this.white=[];//白棋
     this.board=board;
     this.grid=grid;
     this.currentBlack=true;
     this.blackComputer=false;
     this.whiteComputer=true;
     this.finished=false;
-    this.gomsets=[];
+    this.gomsets=[];//死活二三四五
     this.nextMove=1;
 
     this.candidates=[];
@@ -58,7 +65,7 @@ Gomoku.prototype.drawBoard=function(){
         this.board.appendChild(circle);
     }
 };
-Gomoku.prototype.gomo=function(){
+Gomoku.prototype.gomo=function(){//執行一步棋
     this.drawBoard();
     this.analyzeGomsets();
     this.showResult();
@@ -76,14 +83,14 @@ Gomoku.prototype.computerPlay=function(){
         return;
     }
 };
-Gomoku.prototype.shaBlack=function(x,y){
+Gomoku.prototype.shaBlack=function(x,y){//下黑
     var g=new Gom(x,y);
     g.moveNum=this.nextMove++;
     this.black.push(g);
     this.currentBlack=false;
     this.gomo();
 };
-Gomoku.prototype.shaWhite=function(x,y){
+Gomoku.prototype.shaWhite=function(x,y){//下白
     var g=new Gom(x,y);
     g.moveNum=this.nextMove++;
     this.white.push(g);
